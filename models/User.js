@@ -1,33 +1,35 @@
 const mongoose =require('mongoose');
-
 const userSchema = mongoose.Schema({
-    name:{
+    name: {
         type: String,
-        maxlength : 10
+        maxlength: 50
     },
     email: {
         type: String,
-        trim:true, //kim dae woong @ 공백을 없애줌
-        unique:1 //중복X
+        trim: true,
+        unique: 1
     },
-    password:{
-        type:String,
-        minlength:5
+    password: {
+        type: String,
+        minlength: 5
     },
-    //관리자 or 일반유저
-    role:{
+    lastname: {
+        type: String,
+        maxlength: 50
+    },
+    role: {
         type: Number,
         default: 0
     },
     image: String,
-    token:{
-        type:String  //유효성 검사
+    token: {
+        type: String
     },
-    tokenExp:{
-        type:Number  //토큰의 유효기간
+    tokenExp: {
+        type: Number
     }
 })
 
-const User=mongoose.model('User','userSchema')
+const User = mongoose.model('User', userSchema)
 
-module.exports={ User }
+module.exports = { User }
